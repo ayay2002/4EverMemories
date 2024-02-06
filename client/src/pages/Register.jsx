@@ -42,7 +42,7 @@ export default function Register() {
             } else {
                 setData({})
                 toast.success('Login successful, Welcome!')
-                navigate('/photographer')
+                navigate('/login')
             }
         } catch (error) {
             console.log(error)
