@@ -7,6 +7,13 @@ export default function Dashboard() {
         <div>
             <h1>Dashboard</h1>
             {!!user && (<h1>Hi {user.name}!</h1>)}
+            <div>
+                <div>
+                    <div>
+                        <a href="/"></a>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
