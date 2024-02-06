@@ -1,1 +1,2 @@
-node_modules
+/server/cd.env
+/server/node_modules
