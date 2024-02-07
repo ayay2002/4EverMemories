@@ -9,6 +9,21 @@ export default function Dashboard() {
             {!!user && (<h1>Hi {user.name}!</h1>)}
             <div>
                 <div>
+                    <h1></h1>
+                    <span></span>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <p>
+                        <span>
+                            Professional photography for weddings, families, and events
+                        </span>
+                    </p>
+                </div>
+            </div>
+            <div>
+                <div>
                     <div>
                         <a href="/"></a>
                     </div>
