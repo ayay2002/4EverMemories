@@ -26,7 +26,7 @@ authRoutes.route("/register").post(function (req, response) {
     });
 });
 
-recordRoutes.route("/profile").get(function (req, res) {
+authRoutes.route("/profile").get(function (req, res) {
     let db_connect = dbo.getDb();
     let myquery = { _id: ObjectId(req.params.id) };
     db_connect
