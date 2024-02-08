@@ -24,7 +24,7 @@ export default function Login() {
                 toast.error(data.error)
             } else {
                 setData({});
-                navigate('/dashboard')
+                navigate('/dashboard/user')
             }
         } catch (error) {
 
@@ -43,7 +43,7 @@ export default function Login() {
                 toast.error(data.error)
             } else {
                 setData({});
-                navigate('/dashboard')
+                navigate('/dashboard/photographer')
             }
         } catch (error) {
 
