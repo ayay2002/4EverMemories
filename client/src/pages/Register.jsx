@@ -18,6 +18,7 @@ export default function Register() {
     })
 
 
+
     const registerUser = async (e) => {
         e.preventDefault()
         const { name, email, password } = data1
@@ -27,16 +28,14 @@ export default function Register() {
             })
             if (data1.error) {
             if (data.error) {
-                console.log("1")
                 toast.error(data.error)
             } else {
-                console.log("2")
                 setData1({})
                 toast.success('Login successful, Welcome!')
                 navigate('/login')
             }
+        }
         } catch (error) {
-            console.log("3")
             console.log(error)
         }
     }
@@ -90,4 +89,4 @@ export default function Register() {
         </div>
         </div>
     )
-}
+    }
