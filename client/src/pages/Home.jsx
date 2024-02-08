@@ -1,4 +1,10 @@
 import React from 'react'
+import { camera } from '../assets/index.js';
+import { cove } from '../assets/index.js';
+import { family } from '../assets/index.js';
+import { wall } from '../assets/index.js';
+import { shore } from '../assets/index.js';
+import { desert } from '../assets/index.js';
 
 export default function Home() {
   return (
@@ -7,7 +13,7 @@ export default function Home() {
         <h3><b>4EverMemories</b></h3>
       </header>
       <main>
-        <img src='https://img1.wsimg.com/isteam/stock/11270/:/rs=w:1280'></img>
+        <img src={camera}></img>
         <div>
           <h4>Capturing Life's Moments</h4>
           <h2>Professional photography for weddings, families and events</h2>
