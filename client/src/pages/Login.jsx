@@ -5,25 +5,28 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
     const navigate = useNavigate()
-    const [data, setData] = useState({
+    const [data1, setData1] = useState({
+        email: '',
+        password: '',
+    })
+    const [data2, setData2] = useState({
         email: '',
         password: '',
     })
 
 
-
     const loginUser = async (e) => {
         e.preventDefault()
-        const { email, password } = data
+        const { email, password } = data1
         try {
-            const { data } = await axios.post('/login', {
+            const { data1 } = await axios.post('/login', {
                 email,
                 password
             })
-            if (data.error) {
-                toast.error(data.error)
+            if (data1.error) {
+                toast.error(data1.error)
             } else {
-                setData({});
+                setData1({});
 
                 navigate('/dashboard/user')
 
@@ -35,16 +38,16 @@ export default function Login() {
 
     const loginPhotographer = async (e) => {
         e.preventDefault()
-        const { email, password } = data
+        const { email, password } = data2
         try {
-            const { data } = await axios.post('/login', {
+            const { data2 } = await axios.post('/login', {
                 email,
                 password
             })
-            if (data.error) {
-                toast.error(data.error)
+            if (data2.error) {
+                toast.error(data2.error)
             } else {
-                setData({});
+                setData2({});
 
                 navigate('/dashboard/photographer')
 
@@ -59,18 +62,18 @@ export default function Login() {
             <div>
                 <form onSubmit={loginUser}>
                     <label>Email</label>
-                    <input type="email" placeholder='enter email...' value={data.email} onChange={(e) => setData({ ...data, email: e.target.value })} />
+                    <input type="email" placeholder='enter email...' value={data1.email} onChange={(e) => setData1({ ...data1, email: e.target.value })} />
                     <label>Password</label>
-                    <input type="password" placeholder='enter password...' value={data.password} onChange={(e) => setData({ ...data, password: e.target.value })} />
+                    <input type="password" placeholder='enter password...' value={data1.password} onChange={(e) => setData1({ ...data1, password: e.target.value })} />
                     <button type='submit'>Login</button>
                 </form>
             </div>
             <div>
                 <form onSubmit={loginPhotographer}>
                     <label>Email</label>
-                    <input type="email" placeholder='enter email...' value={data.email} onChange={(e) => setData({ ...data, email: e.target.value })} />
+                    <input type="email" placeholder='enter email...' value={data2.email} onChange={(e) => setData2({ ...data2, email: e.target.value })} />
                     <label>Password</label>
-                    <input type="password" placeholder='enter password...' value={data.password} onChange={(e) => setData({ ...data, password: e.target.value })} />
+                    <input type="password" placeholder='enter password...' value={data2.password} onChange={(e) => setData2({ ...data2, password: e.target.value })} />
                     <button type='submit'>Login</button>
                 </form>
             </div>
