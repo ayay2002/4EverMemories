@@ -16,6 +16,7 @@ const server = new ApolloServer({
   resolvers,
 });
 app.use(require("./routes/record"));
+app.use(require("./routes/authRoutes"));
 
 app.use(cors());
 
