@@ -42,7 +42,7 @@ export default function Register() {
             } else {
                 setData({})
                 toast.success('Login successful, Welcome!')
-                navigate('/photographer')
+                navigate('/login')
             }
         } catch (error) {
             console.log(error)
@@ -54,6 +54,7 @@ export default function Register() {
     return (
         <div>
         <div className="user-form">
+            <h3>User Register</h3>
             <form onSubmit={registerUser}>
                 <label>Name</label>
                 <input type="text" placeholder='enter name...' value={data.name} onChange={(e) => setData({ ...data, name: e.target.value })} />
@@ -65,6 +66,7 @@ export default function Register() {
             </form>
         </div>
         <div className="photographer-form">
+            <h3>Photographer Register</h3>
             <form onSubmit={registerPhotographer}>
                 <label>Name</label>
                 <input type="text" placeholder='enter name...' value={data.name} onChange={(e) =>   setData({ ...data, name: e.target.value })} />
