@@ -19,13 +19,16 @@ export default function Register() {
                 name, email, password
             })
             if (data.error) {
+                console.log("1")
                 toast.error(data.error)
             } else {
+                console.log("2")
                 setData({})
                 toast.success('Login successful, Welcome!')
                 navigate('/login')
             }
         } catch (error) {
+            console.log("3")
             console.log(error)
         }
     }
