@@ -38,7 +38,7 @@ export default function Dashboard() {
             <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"></script>
             <script type="module" src="/src/assets/index.js"></script>
         </div>
-    
+
     )
 }
 
