@@ -1,27 +1,35 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const photographerSchema = require("./photographer");
+const userSchema = new Schema(
+  {
+    userId: {
+      type: Number,
+      unique: true,
+    },
+    name: {
+      type: String,
+      unique: true,
+    },
+    email: {
+      type: String,
+      unique: true,
+    },
+    password: {
+      type: String,
+      require: true,
+    },
+    savedPhotographers: [{ type: Schema.Types.ObjectId, ref: "Photographer" }],
+  },
+  {
+    toJSON: {
+      virtuals: true,
+    },
+  }
+);
 
-const userSchema = new Schema({
-  userId: {
-    type: Number,
-    unique: true,
-  },
-  name: {
-    type: String,
-    unique: true,
-  },
-  email: {
-    type: String,
-    unique: true,
-  },
-  password: {
-    type: String,
-    require: true,
-  },
-
-  savedPhotographers: [photographerSchema],
+userSchema.virtual("photographerCount").get(function () {
+  return this.savedPhotographers.length;
 });
 
 const UserModel = mongoose.model("User", userSchema);
