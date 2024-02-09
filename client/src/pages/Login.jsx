@@ -55,6 +55,7 @@ export default function Login() {
   return (
     <div className="login-container">
       <div className="login-form">
+      <h3 className="form-header">User Login</h3>
         <form onSubmit={loginUser}>
           <label>Email</label>
           <input
@@ -74,6 +75,7 @@ export default function Login() {
         </form>
       </div>
       <div className="login-form">
+      <h3 className="form-header">Photographer Login</h3>
         <form onSubmit={loginPhotographer}>
           <label>Email</label>
           <input
