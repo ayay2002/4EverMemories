@@ -25,7 +25,14 @@ input AlbumInput {
     authors: String
     image: [String]
     albumId: String!
-    viewers: [String]
+
+}
+
+type Auth {
+    token: ID!
+    photographer: Photographer
+    user: User
+
 }
 
 type Query {
