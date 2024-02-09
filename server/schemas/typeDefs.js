@@ -38,9 +38,8 @@ type Query {
 }
 
 type Auth {
-    name: String!
-    email: String!
-    password: String!
+    token: ID!
+    user:User 
 }
 
 type UserMutation {
