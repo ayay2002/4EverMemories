@@ -3,6 +3,9 @@ import React from 'react';
 export default function Home() {
   return (
     <div className="home-container">
+      <div className="banner">
+        <h1>Welcome to Our Photography Studio</h1>
+      </div>
       <div>
         <p>Hello! Please select from one of the choices above.</p>
       </div>
