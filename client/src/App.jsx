@@ -21,7 +21,8 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/dashboard/:role' element={<Dashboard />} />
+        <Route path='/dashboard/user' element={<Dashboard role={'user'}/>} />
+        <Route path='/dashboard/photographer' element={<Dashboard role={'photographer'}/>} />
       </Routes>
     </UserContextProvider>
   )
