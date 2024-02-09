@@ -25,7 +25,7 @@ input AlbumInput {
     authors: String
     image: [String]
     albumId: String!
-    viewers[User]
+    viewers: [String]
 }
 
 type Query {
@@ -35,6 +35,12 @@ type Query {
     user(userId: ID!): User
     albums: [Album]!
     album(album: ID!): Album 
+}
+
+type Auth {
+    name: String!
+    email: String!
+    password: String!
 }
 
 type UserMutation {

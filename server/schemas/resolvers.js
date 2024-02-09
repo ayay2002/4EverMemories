@@ -1,4 +1,5 @@
-const { User, Photographer } = require("../models");
+const { Photographer } = require("../models/photographer");
+const { User } = require("../models/user");
 const {
   signToken,
   AuthenticationError,
@@ -15,3 +16,6 @@ const resolvers = {
     },
   },
 };
+
+module.exports = resolvers;
+
