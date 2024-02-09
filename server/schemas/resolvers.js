@@ -13,5 +13,8 @@ const resolvers = {
     photographer: async (parent, { photographerId }) => {
       return Photographer.findOne({ _id: photographerId });
     },
+    users: async () => {
+      return User.find();
+    },
   },
 };
