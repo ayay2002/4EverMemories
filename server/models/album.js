@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const albumsSchema = new Schema(
+const albumSchema = new Schema(
   {
     title: String,
     author: {
@@ -18,10 +18,10 @@ const albumsSchema = new Schema(
   }
 );
 
-albumsSchema.virtual("viewersCount").get(function () {
+albumSchema.virtual("viewersCount").get(function () {
   return this.viewers.length;
 });
 
-const albumsModel = mongoose.model("album", albumsSchema);
+const albumsModel = mongoose.model("album", albumSchema);
 
 module.exports = albumsModel;
