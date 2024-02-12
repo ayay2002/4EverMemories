@@ -34,12 +34,8 @@ type Auth {
 }
 
 type Query {
-    photographers: [Photographer]!
-    photographer(photographerId: ID!): Photographer
-    users: [User]!
-    user(userId: ID!): User
-    albums: [Album]!
-    album(album: ID!): Album 
+    photographers: Photographer
+    users: User
 }
 
 type UserMutation {
