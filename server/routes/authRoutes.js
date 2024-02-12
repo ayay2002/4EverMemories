@@ -10,11 +10,14 @@ const dbo = require("../db/conn");
  
 // This helps convert the id from string to ObjectId for the _id.
 const ObjectId = require("mongodb").ObjectId;
+
+const UserModel = require("../models/user")
  
 // This section will help you create a new record.
 // This section will help you create a new record.
 authRoutes.route("/register").post(function (req, response) {
     let db_connect = dbo.getDb();
+    console.log(req)
     let myobj = {
       name: req.body.name,
       position: req.body.email,
@@ -26,16 +29,14 @@ authRoutes.route("/register").post(function (req, response) {
     });
 });
 
-authRoutes.route("/profile").get(function (req, res) {
-    let db_connect = dbo.getDb();
-    let myquery = { _id: ObjectId(req.params.id) };
-    db_connect
-      .collection("Users")
-      .findOne(myquery, function (err, result) {
-        if (err) throw err;
-        res.json(result);
-      });
+authRoutes.route("/profile").get(async function (req, response) {
+    let db_connect = dbo.getDb("EverMemories");
+  
+    UserModel.find()
+    .then(data => res.json(data))
+    .catch(err => res.status(404).json())
 });
+
    
 
    module.exports = authRoutes;
