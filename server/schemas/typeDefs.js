@@ -25,17 +25,24 @@ input AlbumInput {
     authors: String
     image: [String]
     albumId: String!
+
 }
 
 type Auth {
     token: ID!
     photographer: Photographer
     user: User
+
 }
 
 type Query {
     photographers: Photographer
     users: User
+}
+
+type Auth {
+    token: ID!
+    user:User 
 }
 
 type UserMutation {

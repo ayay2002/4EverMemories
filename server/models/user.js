@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
+const { Photographer } = require("./photographer");
 
 const userSchema = new Schema(
   {
