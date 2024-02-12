@@ -3,6 +3,7 @@ const express = require("express");
 // recordRoutes is an instance of the express router.
 // We use it to define our routes.
 // The router will be added as a middleware and will take control of requests starting with path /record.
+
 const authRoutes = express.Router();
  
 // This will help us connect to the database
@@ -15,7 +16,9 @@ const UserModel = require("../models/user")
  
 // This section will help you create a new record.
 // This section will help you create a new record.
+
 authRoutes.route("/register").post(function (req, response) {
+
     let db_connect = dbo.getDb();
     console.log(req)
     let myobj = {
@@ -27,6 +30,7 @@ authRoutes.route("/register").post(function (req, response) {
       if (err) throw err;
       response.json(res);
     });
+
 });
 
 authRoutes.route("/profile").get(async function (req, response) {
@@ -40,3 +44,4 @@ authRoutes.route("/profile").get(async function (req, response) {
    
 
    module.exports = authRoutes;
+

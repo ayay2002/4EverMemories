@@ -1,4 +1,5 @@
-import './App.css'
+import './index.css'; // Import the index.css file
+
 import { Routes, Route } from 'react-router-dom';
 import Navbar from '../src/components/Navbar';
 import Home from '../src/pages/Home';
@@ -21,7 +22,8 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/dashboard/:role' element={<Dashboard />} />
+        <Route path='/dashboard/user' element={<Dashboard role={'user'}/>} />
+        <Route path='/dashboard/photographer' element={<Dashboard role={'photographer'}/>} />
       </Routes>
     </UserContextProvider>
   )
