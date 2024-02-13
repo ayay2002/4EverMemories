@@ -79,7 +79,9 @@ body {
 }
 
 /* Home.jsx CSS */
-
+.serviceimage {
+  width: 400px;
+}
 .home-container {
   max-width: 800px;
   margin: 0 auto;
