@@ -1,11 +1,10 @@
-const mongoose = require("mongoose");
-const { Schema } = mongoose;
+const { Schema, model } = require("mongoose");
 
 const photographerSchema = new Schema({
-  photographerId: {
-    type: Number,
-    unique: true,
-  },
+  // photographerId: {
+  //   type: Number,
+  //   unique: true,
+  // },
   image: {
     type: String,
   },
@@ -25,6 +24,6 @@ const photographerSchema = new Schema({
     required: true,
   },
 });
-const photographerModel = mongoose.model("Photographer", photographerSchema);
+const Photographer = model("Photographer", photographerSchema);
 
-module.exports = photographerModel;
+module.exports = Photographer;

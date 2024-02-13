@@ -1,20 +1,21 @@
 const typeDefs = `
 type Photographer {
-    photographerId: ID!
+    _id: ID!
     name: String!
     email: String
     image: String
+    albums: [Album]
 }
 
 type User {
-    userId: ID!
+    _id: ID!
     name: String!
     email: String
     photographers: [Photographer]
 }
 
 type Album {
-    albumId: ID!
+    _id: ID!
     title: String!
     author: [Photographer]
     image:[String]
@@ -36,28 +37,16 @@ type Auth {
 }
 
 type Query {
-    photographers: [Photographer]!
-    photographer(photographerId: ID!): Photographer
-    users: [User]!
-    user(userId: ID!): User
-    albums: [Album]!
-    album(album: ID!): Album 
+    photographers: Photographer
+    users: User
 }
 
-type Auth {
-    token: ID!
-    user:User 
-}
-
-type UserMutation {
-    login(email: String!, password: String!): Auth
+type Mutation {
+    userLogin(email: String!, password: String!): Auth
+    photographerLogin(email: String!, password: String!): Auth
     addUser(name: String!, email: String!, password: String!): Auth
-    addPhotographer(name: String!, image: String!): User
+    addPhotographerProfile(name: String!, image: String!): User
     removePhotographer(photographerId: ID!): User
-}
-
-type PhotographerMutation {
-    login(email: String!, password: String!): Auth
     addPhotographer(name: String!, email: String!, password: String!, image: String!): Auth
     addAlbum(albumData: AlbumInput!): Photographer
     removeAlbum(albumId: ID!): Photographer
