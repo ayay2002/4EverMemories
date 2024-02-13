@@ -29,15 +29,21 @@ const newApolloServer = async () => {
   app.use(express.json());
 
   app.use("/graphql", expressMiddleware(server));
+  dbo.once("open", () => {
+    app.listen(PORT, () => {
+      console.log(`API server running on port ${PORT}!`);
+      console.log(`Use GraphQL at http://localhost:${PORT}/graphql`);
+    });
+  });
 };
 
-app.listen(PORT, () => {
-  // Perform a database connection when server starts
-  dbo.connectToServer(function (err) {
-    if (err) console.error(err);
-  });
-  console.log(`Server is running on port: ${PORT}`);
-  console.log(`Use GraphQL at http://localhost:${PORT}/graphql`);
-});
+// app.listen(PORT, () => {
+//   // Perform a database connection when server starts
+//   dbo.connectToServer(function (err) {
+//     if (err) console.error(err);
+//   });
+//   console.log(`Server is running on port: ${PORT}`);
+//   console.log(`Use GraphQL at http://localhost:${PORT}/graphql`);
+// });
 
 newApolloServer();

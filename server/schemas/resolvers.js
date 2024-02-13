@@ -1,9 +1,7 @@
-const { Photographer } = require("../models/photographer");
-const { User } = require("../models/user");
-const {
-  signToken,
-  AuthenticationError,
-} = require("../controllers/authControllers");
+const Photographer = require("../models/photographer");
+const User = require("../models/user");
+const { signToken } = require("../utils/auth");
+const { AuthenticationError } = require("../controllers/authControllers");
 
 const resolvers = {
   Query: {
@@ -30,14 +28,14 @@ const resolvers = {
       throw new AuthenticationError("User is not authenticated");
     },
   },
-  PhotographerMutation: {
+  Mutation: {
     addPhotographer: async (parent, args) => {
       const photographer = await Photographer.create(args);
       const token = signToken(photographer);
 
       return { token, photographer };
     },
-    login: async (parent, { email, password }) => {
+    photographerLogin: async (parent, { email, password }) => {
       const photographer = await Photographer.findOne({ email });
 
       if (!photographer) {
@@ -79,15 +77,13 @@ const resolvers = {
 
       throw AuthenticationError;
     },
-  },
-  UserMutation: {
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
 
       return { token, user };
     },
-    login: async (parent, { email, password }) => {
+    userLogin: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 
       if (!user) {
@@ -103,7 +99,7 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addPhotographer: async (parent, { name, image }, context) => {
+    addPhotographerProfile: async (parent, { name, image }, context) => {
       if (!context.user) {
         throw new AuthenticationError("User is not authenticated");
       }

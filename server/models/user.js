@@ -1,13 +1,11 @@
-const mongoose = require("mongoose");
-const { Schema } = mongoose;
-const { Photographer } = require("./photographer");
+const { Schema, model } = require("mongoose");
 
 const userSchema = new Schema(
   {
-    userId: {
-      type: Number,
-      unique: true,
-    },
+    // userId: {
+    //   type: Number,
+    //   unique: true,
+    // },
     name: {
       type: String,
       unique: true,
@@ -33,6 +31,6 @@ userSchema.virtual("photographerCount").get(function () {
   return this.savedPhotographers.length;
 });
 
-const UserModel = mongoose.model("User", userSchema);
+const User = model("User", userSchema);
 
-module.exports = UserModel;
+module.exports = User;
