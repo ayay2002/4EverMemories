@@ -24,6 +24,42 @@ body {
   text-decoration: underline;
 }
 
+/* Navbar.jsx CSS */
+
+.navBar {
+  width: 100%;
+  justify-content: right;
+  position: relative;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  font-size: large;
+  font-weight: bold;
+}
+
+.navBar a {
+  color: #000;
+  text-decoration: none;
+  margin-left: 20px;
+  transition: color 0.3s ease;
+}
+
+.navBar a:hover {
+  color: #007bff;
+}
+
+.navBar a::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background-color: #007bff;
+  transition: width 0.3s ease;
+}
+
+.navBar a:hover::after {
+  width: 100%;
+}
 
 
 /* dashboard.jsx CSS */
@@ -79,15 +115,19 @@ body {
 }
 
 /* Home.jsx CSS */
+.serviceimage {
+  width: 400px;
+}
 
 .home-container {
-  max-width: 800px;
   margin: 0 auto;
   padding: 20px;
   text-align: center;
 }
 
 .banner {
+  width: 100%;
+  justify-content: center;
   background-color: #007bff;
   color: #fff;
   padding: 20px;
@@ -156,38 +196,7 @@ body {
   background-color: #0056b3;
 }
 
-/* Navbar.jsx CSS */
 
-.navBar {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  display: flex;
-}
-
-.navBar a {
-  color: #000;
-  text-decoration: none;
-  margin-left: 20px;
-  transition: color 0.3s ease;
-}
-
-.navBar a:hover {
-  color: #007bff;
-}
-
-.navBar a::after {
-  content: '';
-  display: block;
-  width: 0;
-  height: 2px;
-  background-color: #007bff;
-  transition: width 0.3s ease;
-}
-
-.navBar a:hover::after {
-  width: 100%;
-}
 
 /* Photographer.jsx CSS */
 

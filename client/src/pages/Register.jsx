@@ -23,6 +23,10 @@ export default function Register() {
         try {
             const response = await axios.post('/register', {
                 name, email, password
+            }, {headers: {
+                'Content-Type': 'text/json'
+            }
+                
             })
             if (response.data.error) {
                 toast.error(response.data.error)
