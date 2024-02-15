@@ -26,39 +26,41 @@ body {
 
 /* Navbar.jsx CSS */
 
-.navBar {
-  width: 100%;
-  justify-content: right;
-  position: relative;
-  top: 20px;
-  right: 20px;
-  display: flex;
-  font-size: large;
-  font-weight: bold;
+
+/* Global styles */
+body {
+  font-family: Arial, sans-serif;
 }
 
-.navBar a {
-  color: #000;
+/* Navigation styles */
+nav {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+nav ul li:last-child {
+  margin-right: 0;
+}
+
+nav ul li a {
+  color: #fff;
   text-decoration: none;
-  margin-left: 20px;
-  transition: color 0.3s ease;
 }
 
-.navBar a:hover {
-  color: #007bff;
-}
-
-.navBar a::after {
-  content: '';
-  display: block;
-  width: 0;
-  height: 2px;
-  background-color: #007bff;
-  transition: width 0.3s ease;
-}
-
-.navBar a:hover::after {
-  width: 100%;
+nav ul li a:hover {
+  text-decoration: underline;
 }
 
 
