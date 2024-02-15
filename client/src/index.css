@@ -117,42 +117,43 @@ nav ul li a:hover {
 }
 
 /* Home.jsx CSS */
-.serviceimage {
-  width: 400px;
-}
+
+/* Home page styles */
 
 .home-container {
-  margin: 0 auto;
   padding: 20px;
-  text-align: center;
 }
 
 .banner {
-  width: 100%;
-  justify-content: center;
-  background-color: #007bff;
+  background-color: #333;
   color: #fff;
   padding: 20px;
-  margin-bottom: 20px;
-}
-
-.banner h1 {
-  font-size: 24px;
 }
 
 .home-header {
-  font-size: 24px;
-  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .home-title {
-  font-size: 36px;
-  margin-bottom: 10px;
+  color: #333;
+}
+
+.home-divider {
+  display: inline-block;
+  width: 100px;
+  height: 3px;
+  background-color: #333;
+  margin-left: 10px;
+  vertical-align: middle;
 }
 
 .home-description {
-  font-size: 18px;
-  margin-bottom: 20px;
+  margin-top: 20px;
+  font-style: italic;
+}
+
+.service-image {
+  height: 300px; /* Adjust height as needed */
 }
 
 
