@@ -2,15 +2,11 @@ import { gql } from "@apollo/client";
 
 // All mutations for users
 export const LOGIN_USER = gql`
-  mutation login($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
-      token
-      user {
-        _id
-        name
-      }
-    }
+mutation UserLogin($email: String!, $password: String!) {
+  userLogin(email: $email, password: $password) {
+    token
   }
+}
 `;
 
 export const ADD_USER = gql`
@@ -26,14 +22,14 @@ export const ADD_USER = gql`
   }
 `;
 
-export const REMOVE_PHOTOGRAPHER = gql`
-  mutation RemovePhotographer($photographerId: ID!) {
-    removePhotographer(photographerId: $photographerId) {
-      _id
-      name
-    }
-  }
-`;
+// export const REMOVE_PHOTOGRAPHER = gql`
+//   mutation RemovePhotographer($photographerId: ID!) {
+//     removePhotographer(photographerId: $photographerId) {
+//       _id
+//       name
+//     }
+//   }
+// `;
 // All mutations for photographer
 export const ADD_PHOTOGRAPHER = gql`
   mutation AddPhotographer(
@@ -58,17 +54,17 @@ export const ADD_PHOTOGRAPHER = gql`
   }
 `;
 
-export const ADD_PHOTOGRAPHER_PROFILE = gql`
-  mutation AddPhotographerProfile($name: String!, $image: String!) {
-    addPhotographerProfile(name: $name, image: $image) {
-      photographers {
-        _id
-        name
-        image
-      }
-    }
-  }
-`;
+// export const ADD_PHOTOGRAPHER_PROFILE = gql`
+//   mutation AddPhotographerProfile($name: String!, $image: String!) {
+//     addPhotographerProfile(name: $name, image: $image) {
+//       photographers {
+//         _id
+//         name
+//         image
+//       }
+//     }
+//   }
+// `;
 
 export const PHOTOGRAPHER_LOGIN = gql`
   mutation PhotographerLogin($email: String!, $password: String!) {
@@ -82,22 +78,22 @@ export const PHOTOGRAPHER_LOGIN = gql`
     }
   }
 `;
-//All mutations for albums
-export const ADD_ALBUM = gql`
-  mutation AddAlbum($albumData: AlbumInput!) {
-    addAlbum(albumData: $albumData) {
-      _id
-      name
-      image
-    }
-  }
-`;
+// //All mutations for albums
+// export const ADD_ALBUM = gql`
+//   mutation AddAlbum($albumData: AlbumInput!) {
+//     addAlbum(albumData: $albumData) {
+//       _id
+//       name
+//       image
+//     }
+//   }
+// `;
 
-export const REMOVE_ALBUM = gql`
-  mutation RemoveAlbum($albumId: ID!) {
-    removeAlbum(albumId: $albumId) {
-      _id
-      name
-      image
-  }
-`;
+// export const REMOVE_ALBUM = gql`
+//   mutation RemoveAlbum($albumId: ID!) {
+//     removeAlbum(albumId: $albumId) {
+//       _id
+//       name
+//       image
+//   }
+// `;

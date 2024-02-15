@@ -1,31 +1,45 @@
 import './index.css'; // Import the index.css file
 
-import { Routes, Route } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 import Navbar from '../src/components/Navbar';
-import Home from '../src/pages/Home';
-import Register from '../src/pages/Register';
-import Login from '../src/pages/Login';
-import axios from 'axios';
 import { Toaster } from 'react-hot-toast';
-import { UserContextProvider } from '../context/userContext';
-import Dashboard from './pages/Dashboard';
 
-axios.defaults.baseURL = 'http://localhost:5000';
-axios.defaults.withCredentials = true;
+
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
+
+
 
 function App() {
   return (
-    <UserContextProvider>
+    <ApolloProvider client={client}>
       <Navbar />
       <Toaster position='bottom-right' toastOptions={{ duration: 2000 }} />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/register' element={<Register />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/dashboard/user' element={<Dashboard role={'user'}/>} />
-        <Route path='/dashboard/photographer' element={<Dashboard role={'photographer'}/>} />
-      </Routes>
-    </UserContextProvider>
+      <Outlet />
+    </ApolloProvider>
   )
 }
 
