@@ -236,47 +236,87 @@ nav ul li a:hover {
 
 /* Register.jsx CSS */
 
-.user-form,
-.photographer-form {
-  max-width: 400px;
+
+/* Global styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 600px;
   margin: 0 auto;
   padding: 20px;
-  border: 1px solid #ccc;
+  background-color: #fff;
   border-radius: 5px;
-  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-row.space-between {
+  justify-content: space-between;
+}
+
+.flex-row.flex-end {
+  justify-content: flex-end;
+}
+
+.my-1 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.my-2 {
+  margin-top: 20px;
   margin-bottom: 20px;
 }
 
-.form-header {
-  font-size: 24px;
-  margin-bottom: 20px;
+/* Form styles */
+form {
+  display: flex;
+  flex-direction: column;
 }
 
-.form-label {
-  display: block;
+label {
   margin-bottom: 5px;
 }
 
-.form-input {
+input[type='text'],
+input[type='email'],
+input[type='password'] {
   width: 100%;
   padding: 8px;
-  margin-bottom: 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 4px;
 }
 
-.form-button {
-  width: 100%;
-  padding: 10px;
+button {
+  padding: 10px 20px;
   background-color: #007bff;
   color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.form-button:hover {
+button:hover {
   background-color: #0056b3;
 }
 
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
