@@ -1,7 +1,7 @@
 const Photographer = require("../models/photographer");
 const User = require("../models/user");
 const { signToken } = require("../utils/auth");
-const { AuthenticationError } = require("../controllers/authControllers");
+const { AuthenticationError } = require("../utils/auth");
 
 const resolvers = {
   Query: {

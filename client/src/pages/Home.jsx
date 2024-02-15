@@ -1,13 +1,8 @@
 import React from 'react';
-// import { ReactDOM } from 'react-dom';
-// import Carousel from 'react-bootstrap/Carousel';
-// import {ExampleCarouselImage} from '../assets/images';
 import Card from 'react-bootstrap/Card';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
 import CardGroup from 'react-bootstrap/CardGroup';
 
-export default function Home() {
+const Home = () => {
   return (
     <div className="home-container">
       <div className="banner">
@@ -29,57 +24,6 @@ export default function Home() {
           </p>
         </div>
       </div>
-
-
-      {/* <div>
-      <Carousel fade>
-      <Carousel.Item>
-        <ExampleCarouselImage text="First slide" />
-        <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <ExampleCarouselImage text="Second slide" />
-        <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <ExampleCarouselImage text="Third slide" />
-        <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
-        </Carousel.Caption>
-      </Carousel.Item>
-    </Carousel>
-      </div> */}
-
-
-
-      {/* <div>
-      <Row xs={1} md={2} className="g-4">
-      {Array.from({ length: 4 }).map((_, idx) => (
-        <Col key={idx}>
-          <Card>
-            <Card.Img variant="top" src="https://image.jimcdn.com/app/cms/image/transf/dimension=1000x10000:format=jpg/path/sc6d2404ff8bcd49b/image/i157ef2ec4144621a/version/1515190448/image.jpg" />
-            <Card.Body>
-              <Card.Title>Card title</Card.Title>
-              <Card.Text>
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-      ))}
-    </Row>
-      </div> */}
 
       <div>
       <CardGroup>
@@ -115,4 +59,6 @@ export default function Home() {
       </div>
     </div>
   );
-}
+};
+
+export default Home;

@@ -1,99 +1,71 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { toast } from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { Link } from 'react-router-dom';
+import { LOGIN_USER, PHOTOGRAPHER_LOGIN } from '../utils/mutations';
+import Auth from '../utils/auth';
 
-export default function Login() {
-  const navigate = useNavigate();
-  const [user, setUser] = useState({
-    email: '',
-    password: '',
-  });
-  const [photographer, setPhotographer] = useState({
-    email: '',
-    password: '',
-  });
+function Login(props) {
+  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [login, { error }] = useMutation(LOGIN_USER);
 
-  const loginUser = async (e) => {
-    e.preventDefault();
-    const { email, password } = user;
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
     try {
-      const response = await axios.post('/login', {
-        email,
-        password,
+      const mutationResponse = await login({
+        variables: { email: formState.email, password: formState.password },
       });
-      if (response.data.error) {
-        toast.error(response.data.error);
-      } else {
-        setUser({ email: '', password: '' });
-        navigate('/dashboard/user');
-      }
-    } catch (error) {
-      console.error(error);
+      const token = mutationResponse.data.userLogin.token;
+      Auth.login(token);
+    } catch (e) {
+      console.log(e);
     }
   };
 
-  const loginPhotographer = async (e) => {
-    e.preventDefault();
-    const { email, password } = photographer;
-    try {
-      const response = await axios.post('/login', {
-        email,
-        password,
-      });
-      if (response.data.error) {
-        toast.error(response.data.error);
-      } else {
-        setPhotographer({ email: '', password: '' });
-        navigate('/dashboard/photographer');
-      }
-    } catch (error) {
-      console.error(error);
-    }
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
   };
 
   return (
-    <div className="login-container">
-      <div className="login-form">
-      <h3 className="form-header">User Login</h3>
-        <form onSubmit={loginUser}>
-          <label>Email</label>
+    <div className="container my-1">
+      <Link to="/register">← Go to Signup</Link>
+
+      <h2>Login</h2>
+      <form onSubmit={handleFormSubmit}>
+        <div className="flex-row space-between my-2">
+          <label htmlFor="email">Email address:</label>
           <input
+            placeholder="youremail@test.com"
+            name="email"
             type="email"
-            placeholder="Enter email..."
-            value={user.email}
-            onChange={(e) => setUser({ ...user, email: e.target.value })}
+            id="email"
+            onChange={handleChange}
           />
-          <label>Password</label>
+        </div>
+        <div className="flex-row space-between my-2">
+          <label htmlFor="pwd">Password:</label>
           <input
+            placeholder="******"
+            name="password"
             type="password"
-            placeholder="Enter password..."
-            value={user.password}
-            onChange={(e) => setUser({ ...user, password: e.target.value })}
+            id="pwd"
+            onChange={handleChange}
           />
-          <button type="submit">Login as User</button>
-        </form>
-      </div>
-      <div className="login-form">
-      <h3 className="form-header">Photographer Login</h3>
-        <form onSubmit={loginPhotographer}>
-          <label>Email</label>
-          <input
-            type="email"
-            placeholder="Enter email..."
-            value={photographer.email}
-            onChange={(e) => setPhotographer({ ...photographer, email: e.target.value })}
-          />
-          <label>Password</label>
-          <input
-            type="password"
-            placeholder="Enter password..."
-            value={photographer.password}
-            onChange={(e) => setPhotographer({ ...photographer, password: e.target.value })}
-          />
-          <button type="submit">Login as Photographer</button>
-        </form>
-      </div>
+        </div>
+        {error ? (
+          <div>
+            <p className="error-text">The provided credentials are incorrect</p>
+          </div>
+        ) : null}
+        <div className="flex-row flex-end">
+          <button type="submit">Submit</button>
+        </div>
+      </form>
     </div>
   );
 }
+
+export default Login;
